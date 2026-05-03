@@ -18,6 +18,14 @@ admin/node_modules/
 admin/.env.local
 admin/.env.*.local
 
+# ── Next.js website ───────────────────────────────────────────────────────────
+website/.next/
+website/out/
+website/node_modules/
+# local secrets — never commit
+website/.env.local
+website/.env.*.local
+
 # ── OS / editor ───────────────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
