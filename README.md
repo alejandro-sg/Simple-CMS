@@ -24,6 +24,7 @@ A self-hostable, full-stack CMS template for any website or business.
 |-------|-----------|
 | **Backend** | Go 1.25, chi router, SQLite (WAL mode) |
 | **Admin UI** | Next.js 16, React 19, TypeScript, Tailwind CSS 4, SWR |
+| **Public Website** | Next.js 16, React 19, TypeScript, Tailwind CSS 4, ISR |
 | **Infra** | AWS Lightsail (Docker + Caddy), AWS S3, Vercel free tier |
 
 ---
@@ -31,10 +32,10 @@ A self-hostable, full-stack CMS template for any website or business.
 ## Architecture
 
 ```
-Admin UI (Vercel)
-       |
-       | HTTPS
-       v
+Admin UI (Vercel)    Public Website (Vercel)
+       |                     |
+       | HTTPS               | HTTPS (ISR, revalidate webhook)
+       v                     v
   Caddy (Lightsail)          AWS S3
        |                       ^
        | reverse proxy         | image uploads
@@ -49,12 +50,13 @@ Admin UI (Vercel)
 - Caddy handles HTTPS termination and proxies all traffic to the Go API on port 8080
 - The Go API talks directly to a local SQLite database and to S3 for image storage
 - The Admin UI is a Next.js app deployed on Vercel — it calls the API over HTTPS
+- The Public Website is a separate Next.js app on Vercel — server-side rendered with ISR (items revalidate every 60s, site content every 3600s, plus on-demand via webhook)
 
 ---
 
 ## Quick Start (local, no AWS needed)
 
-See **[docs/QUICKSTART.md](docs/QUICKSTART.md)** — you can have the full stack running locally in about 5 minutes.
+See **[docs/QUICKSTART.md](docs/QUICKSTART.md)** — you can have the full stack (API + Admin UI + public website) running locally in about 5 minutes.
 
 ---
 
@@ -66,7 +68,7 @@ See **[docs/QUICKSTART.md](docs/QUICKSTART.md)** — you can have the full stack
 | [docs/LOCAL_DEV.md](docs/LOCAL_DEV.md) | Full local development guide, env vars, smoke tests |
 | [docs/AWS_SETUP.md](docs/AWS_SETUP.md) | Create S3 bucket, IAM user, Lightsail instance, Secrets Manager |
 | [docs/DEPLOY_BACKEND.md](docs/DEPLOY_BACKEND.md) | Deploy the Go API to Lightsail with Docker + Caddy |
-| [docs/DEPLOY_FRONTEND.md](docs/DEPLOY_FRONTEND.md) | Deploy the Admin UI to Vercel |
+| [docs/DEPLOY_FRONTEND.md](docs/DEPLOY_FRONTEND.md) | Deploy the Admin UI and public website to Vercel |
 | [docs/DNS_SETUP.md](docs/DNS_SETUP.md) | DNS records for your domain |
 | [docs/CUSTOMIZATION.md](docs/CUSTOMIZATION.md) | Add fields, change categories, customize for your business |
 | [docs/IAM_KEY_ROTATION.md](docs/IAM_KEY_ROTATION.md) | Automated monthly AWS IAM key rotation via GitHub Actions |

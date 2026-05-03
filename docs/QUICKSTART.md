@@ -96,6 +96,22 @@ Open [http://localhost:3001](http://localhost:3001) and log in with the username
 
 ---
 
+## Website (optional)
+
+The `website/` directory contains a public Next.js website that reads from the API.
+
+```bash
+cd website
+npm install
+cp .env.local.example .env.local
+# Set API_URL=http://localhost:8080 (already set in example)
+npm run dev  # starts on :3000
+```
+
+Open http://localhost:3000 to see the public-facing site.
+
+---
+
 ## Next steps
 
 - **Full dev guide** (env vars, smoke tests, reset DB): [LOCAL_DEV.md](LOCAL_DEV.md)
