@@ -7,7 +7,7 @@ import { api } from "@/lib/api";
 import { ImageUploader } from "./ImageUploader";
 import { Toast } from "./Toast";
 
-// Customize these categories for your business
+// Customize these categories for your project
 const CATEGORIES = ["Category A", "Category B", "Category C"];
 const CONDITIONS = ["New", "Like New", "Good", "Fair", "Poor"];
 const STATUSES = ["In Stock", "Reserved", "Sold"] as const;

@@ -1,6 +1,6 @@
 # Customization Guide
 
-How to adapt Simple-CMS for your own business.
+How to adapt Simple-CMS for your own project.
 
 ---
 
@@ -67,7 +67,7 @@ color: string;
 Edit the `CATEGORIES` constant in `admin/components/ItemForm.tsx`:
 
 ```tsx
-// Customize these categories for your business
+// Customize these categories for your project
 const CATEGORIES = ["Electronics", "Clothing", "Books", "Other"];
 ```
 

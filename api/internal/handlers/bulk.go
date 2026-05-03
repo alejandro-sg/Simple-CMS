@@ -37,7 +37,7 @@ func (h *BulkHandler) Template(w http.ResponseWriter, r *http.Request) {
 	wr.Write([]string{
 		"Example Item Title", // title
 		"Brand Name",         // brand
-		"Category A",         // category  // Customize categories for your business
+		"Category A",         // category  // Customize categories for your project
 		"New",                // condition (New | Like New | Good | Fair | Poor)
 		"Type A",             // type
 		"Item description goes here.", // description

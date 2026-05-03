@@ -1,6 +1,6 @@
 # Simple-CMS
 
-A self-hostable, full-stack CMS template for any website or business.
+A self-hostable, full-stack CMS template for any website or project.
 
 ---
 
@@ -80,7 +80,7 @@ See **[docs/QUICKSTART.md](docs/QUICKSTART.md)** — you can have the full stack
 | [docs/DEPLOY_BACKEND.md](docs/DEPLOY_BACKEND.md) | Deploy the Go API to Lightsail with Docker + Caddy |
 | [docs/DEPLOY_FRONTEND.md](docs/DEPLOY_FRONTEND.md) | Deploy the Admin UI and public website to Vercel |
 | [docs/DNS_SETUP.md](docs/DNS_SETUP.md) | DNS records for your domain |
-| [docs/CUSTOMIZATION.md](docs/CUSTOMIZATION.md) | Add fields, change categories, customize for your business |
+| [docs/CUSTOMIZATION.md](docs/CUSTOMIZATION.md) | Add fields, change categories, customize for your project |
 | [docs/IAM_KEY_ROTATION.md](docs/IAM_KEY_ROTATION.md) | Automated monthly AWS IAM key rotation via GitHub Actions |
 
 ---

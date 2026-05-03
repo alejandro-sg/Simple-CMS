@@ -5,9 +5,9 @@ package handlers
 func DefaultSiteContent() any {
 	return map[string]any{
 		"brand": map[string]any{
-			"name":          "Your Business Name",
-			"logoAlt":       "Your Business logo",
-			"navLines":      []string{"Your Business", "Name"},
+			"name":          "Your Project Name",
+			"logoAlt":       "Your Project logo",
+			"navLines":      []string{"Your Project", "Name"},
 			"tagline":       "A short tagline describing what you do.",
 			"email":         "hello@your-domain.com",
 			"facebookLink":  "https://www.facebook.com/your-page",
@@ -24,7 +24,7 @@ func DefaultSiteContent() any {
 			"eyebrow":          "Your value proposition",
 			"headline":         "A compelling headline for your homepage",
 			"serviceAreaLine":  "Serving your region",
-			"description":      "Describe your business, what you offer, and why customers choose you.",
+			"description":      "Describe your project, what you offer, and why customers choose you.",
 			"trustLine":        "Fast shipping • Secure checkout • Satisfaction guaranteed",
 			"instagramCta":     "Follow us on Instagram",
 			"instagramLink":    "https://www.instagram.com/your-handle",
@@ -48,7 +48,7 @@ func DefaultSiteContent() any {
 			"curationDetail": "Every item is carefully selected and verified before it reaches you.",
 			"storeInfo":      "Open Mon–Fri 9AM–5PM • Fast shipping available",
 			"emptyArrivals":  "No items available right now — check back soon.",
-			"localIntent":    "Your Business Name proudly serves customers in your area.",
+			"localIntent":    "Your Project Name proudly serves customers in your area.",
 			"visitCta":       "Visit our store",
 			"testimonialsTitle": "What our customers are saying",
 			"testimonials": []map[string]any{

@@ -12,7 +12,7 @@ import { ConfirmDialog } from "@/components/ConfirmDialog";
 // Tab definitions
 // ---------------------------------------------------------------------------
 const TABS = [
-  { key: "brand",   label: "Brand & Business",  desc: "Business name, contact info, address, hours, and social links." },
+  { key: "brand",   label: "Brand & Project",  desc: "Project name, contact info, address, hours, and social links." },
   { key: "home",    label: "Home Page",          desc: "Hero headline, categories, how it works, testimonials, and the waitlist section." },
   { key: "shop",    label: "Shop Page",          desc: "Shop title, description, and SMS/email reservation settings." },
   { key: "decor",   label: "Decoration Page",    desc: "The text and item list shown on the Decoration collection page." },
@@ -297,7 +297,7 @@ function BrandTab({
       <SectionTitle title="Brand" />
 
       <Field
-        label="Business name"
+        label="Project name"
         hint="Appears in the browser tab, Google search results, and footer."
         value={b.name}
         onChange={(v) => set({ name: v })}
