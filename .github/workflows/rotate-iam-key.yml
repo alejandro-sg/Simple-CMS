@@ -1,9 +1,10 @@
 name: Rotate API IAM Key
 
 on:
-  schedule:
-    - cron: "0 3 1 * *" # 1st of every month at 3am UTC
-  workflow_dispatch: # allow manual trigger
+  workflow_dispatch: # manual trigger only
+  # To enable monthly auto-rotation, uncomment below:
+  # schedule:
+  #   - cron: "0 3 1 * *" # 1st of every month at 3am UTC
 
 jobs:
   rotate:

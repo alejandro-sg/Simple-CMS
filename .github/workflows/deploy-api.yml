@@ -1,12 +1,14 @@
 name: Deploy API to Lightsail
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - "api/**"
-      - "Caddyfile"
-      - "docker-compose.yml"
+  workflow_dispatch: # manual trigger only
+  # To enable auto-deploy on push, uncomment below:
+  # push:
+  #   branches: [main]
+  #   paths:
+  #     - "api/**"
+  #     - "Caddyfile"
+  #     - "docker-compose.yml"
 
 jobs:
   deploy:
