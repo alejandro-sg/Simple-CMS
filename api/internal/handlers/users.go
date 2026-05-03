@@ -7,9 +7,9 @@ import (
 	"strings"
 
 	"github.com/go-chi/chi/v5"
-	"github.com/your-username/simple-cms/api/internal/middleware"
-	"github.com/your-username/simple-cms/api/internal/models"
-	"github.com/your-username/simple-cms/api/internal/store"
+	"github.com/alejandro-sg/Simple-CMS/api/internal/middleware"
+	"github.com/alejandro-sg/Simple-CMS/api/internal/models"
+	"github.com/alejandro-sg/Simple-CMS/api/internal/store"
 	"golang.org/x/crypto/bcrypt"
 )
 

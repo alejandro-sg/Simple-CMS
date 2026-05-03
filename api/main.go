@@ -13,14 +13,14 @@ import (
 	chimiddleware "github.com/go-chi/chi/v5/middleware"
 	"github.com/joho/godotenv"
 
-	"github.com/your-username/simple-cms/api/internal/config"
-	"github.com/your-username/simple-cms/api/internal/db"
-	"github.com/your-username/simple-cms/api/internal/handlers"
-	"github.com/your-username/simple-cms/api/internal/middleware"
-	"github.com/your-username/simple-cms/api/internal/models"
-	s3client "github.com/your-username/simple-cms/api/internal/s3"
-	"github.com/your-username/simple-cms/api/internal/sessions"
-	"github.com/your-username/simple-cms/api/internal/store"
+	"github.com/alejandro-sg/Simple-CMS/api/internal/config"
+	"github.com/alejandro-sg/Simple-CMS/api/internal/db"
+	"github.com/alejandro-sg/Simple-CMS/api/internal/handlers"
+	"github.com/alejandro-sg/Simple-CMS/api/internal/middleware"
+	"github.com/alejandro-sg/Simple-CMS/api/internal/models"
+	s3client "github.com/alejandro-sg/Simple-CMS/api/internal/s3"
+	"github.com/alejandro-sg/Simple-CMS/api/internal/sessions"
+	"github.com/alejandro-sg/Simple-CMS/api/internal/store"
 )
 
 func main() {

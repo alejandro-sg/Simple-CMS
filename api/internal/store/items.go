@@ -8,7 +8,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/your-username/simple-cms/api/internal/models"
+	"github.com/alejandro-sg/Simple-CMS/api/internal/models"
 )
 
 type ItemStore struct {

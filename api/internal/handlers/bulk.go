@@ -7,8 +7,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/your-username/simple-cms/api/internal/models"
-	"github.com/your-username/simple-cms/api/internal/store"
+	"github.com/alejandro-sg/Simple-CMS/api/internal/models"
+	"github.com/alejandro-sg/Simple-CMS/api/internal/store"
 )
 
 // CSVColumns defines the exact column order for the import template.

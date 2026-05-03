@@ -6,8 +6,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/your-username/simple-cms/api/internal/middleware"
-	"github.com/your-username/simple-cms/api/internal/store"
+	"github.com/alejandro-sg/Simple-CMS/api/internal/middleware"
+	"github.com/alejandro-sg/Simple-CMS/api/internal/store"
 	"github.com/pquerna/otp/totp"
 )
 

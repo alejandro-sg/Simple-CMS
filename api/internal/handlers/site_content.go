@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/your-username/simple-cms/api/internal/store"
+	"github.com/alejandro-sg/Simple-CMS/api/internal/store"
 )
 
 const (

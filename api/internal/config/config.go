@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/your-username/simple-cms/api/internal/secrets"
+	"github.com/alejandro-sg/Simple-CMS/api/internal/secrets"
 )
 
 type Config struct {

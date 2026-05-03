@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/your-username/simple-cms/api/internal/config"
+	"github.com/alejandro-sg/Simple-CMS/api/internal/config"
 )
 
 // TriggerRevalidation calls the Next.js on-demand revalidation endpoint.

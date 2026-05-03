@@ -4,9 +4,9 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/your-username/simple-cms/api/internal/models"
-	"github.com/your-username/simple-cms/api/internal/sessions"
-	"github.com/your-username/simple-cms/api/internal/store"
+	"github.com/alejandro-sg/Simple-CMS/api/internal/models"
+	"github.com/alejandro-sg/Simple-CMS/api/internal/sessions"
+	"github.com/alejandro-sg/Simple-CMS/api/internal/store"
 )
 
 type contextKey string

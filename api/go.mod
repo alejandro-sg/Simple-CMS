@@ -1,4 +1,4 @@
-module github.com/your-username/simple-cms/api
+module github.com/alejandro-sg/Simple-CMS/api
 
 go 1.25.0
 

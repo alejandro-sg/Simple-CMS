@@ -6,10 +6,10 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/your-username/simple-cms/api/internal/config"
-	"github.com/your-username/simple-cms/api/internal/middleware"
-	"github.com/your-username/simple-cms/api/internal/sessions"
-	"github.com/your-username/simple-cms/api/internal/store"
+	"github.com/alejandro-sg/Simple-CMS/api/internal/config"
+	"github.com/alejandro-sg/Simple-CMS/api/internal/middleware"
+	"github.com/alejandro-sg/Simple-CMS/api/internal/sessions"
+	"github.com/alejandro-sg/Simple-CMS/api/internal/store"
 	"golang.org/x/crypto/bcrypt"
 )
 

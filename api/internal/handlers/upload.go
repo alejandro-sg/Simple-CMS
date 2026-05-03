@@ -8,9 +8,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/your-username/simple-cms/api/internal/imaging"
-	s3client "github.com/your-username/simple-cms/api/internal/s3"
-	"github.com/your-username/simple-cms/api/internal/store"
+	"github.com/alejandro-sg/Simple-CMS/api/internal/imaging"
+	s3client "github.com/alejandro-sg/Simple-CMS/api/internal/s3"
+	"github.com/alejandro-sg/Simple-CMS/api/internal/store"
 )
 
 const maxUploadSize = 30 << 20 // 30 MB

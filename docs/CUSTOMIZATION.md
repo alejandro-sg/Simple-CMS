@@ -15,7 +15,7 @@ If you publish your fork to GitHub, update the module path so imports resolve co
 
 2. Update all internal imports in one command:
    ```bash
-   find api/ -name "*.go" | xargs sed -i 's|github.com/your-username/simple-cms/api|github.com/YOUR_ORG/YOUR_REPO/api|g'
+   find api/ -name "*.go" | xargs sed -i 's|github.com/alejandro-sg/Simple-CMS/api|github.com/YOUR_ORG/YOUR_REPO/api|g'
    ```
 
 3. Verify everything compiles:

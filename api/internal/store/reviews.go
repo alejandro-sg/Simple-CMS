@@ -6,7 +6,7 @@ import (
 	"errors"
 	"time"
 
-	"github.com/your-username/simple-cms/api/internal/models"
+	"github.com/alejandro-sg/Simple-CMS/api/internal/models"
 )
 
 type ReviewsStore struct {
