@@ -18,6 +18,19 @@ A self-hostable, full-stack CMS template for any website or business.
 
 ---
 
+## Screenshots
+
+**Admin — Site Content editor**
+![Site Content editor](docs/screenshots/admin-site-content.png)
+
+**Admin — Users & permissions**
+![Users page](docs/screenshots/admin-users.png)
+
+**Public website — live after publish**
+![Public website homepage](docs/screenshots/website-homepage.png)
+
+---
+
 ## Tech Stack
 
 | Layer | Technology |
