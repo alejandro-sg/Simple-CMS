@@ -1,0 +1,32 @@
+# ── Go API ────────────────────────────────────────────────────────────────────
+api/cms.db
+api/cms.db-shm
+api/cms.db-wal
+# compiled binary
+api/simple-cms-api
+# local secrets — never commit
+api/.env
+
+# ── Docker ────────────────────────────────────────────────────────────────────
+# docker-compose.yml and Caddyfile are committed — exclude only runtime artifacts
+
+# ── Next.js admin ─────────────────────────────────────────────────────────────
+admin/.next/
+admin/out/
+admin/node_modules/
+# local secrets — never commit
+admin/.env.local
+admin/.env.*.local
+
+# ── OS / editor ───────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ── Misc ──────────────────────────────────────────────────────────────────────
+*.log
+*.pem                        # SSH private keys
+.claude/

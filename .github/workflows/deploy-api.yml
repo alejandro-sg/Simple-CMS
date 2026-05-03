@@ -1,0 +1,54 @@
+name: Deploy API to Lightsail
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "api/**"
+      - "Caddyfile"
+      - "docker-compose.yml"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build API image
+        run: |
+          docker buildx build \
+            --platform linux/amd64 \
+            --load \
+            --tag simple-cms-api:latest \
+            ./api
+
+      - name: Stream image to Lightsail
+        env:
+          SSH_KEY: ${{ secrets.LIGHTSAIL_KEY }}
+          HOST: ${{ secrets.LIGHTSAIL_HOST }}
+          USER: ${{ secrets.LIGHTSAIL_USER }}
+        run: |
+          echo "$SSH_KEY" > /tmp/deploy_key
+          chmod 600 /tmp/deploy_key
+          docker save simple-cms-api:latest | \
+            ssh -i /tmp/deploy_key \
+                -o StrictHostKeyChecking=no \
+                -o ServerAliveInterval=30 \
+                "$USER@$HOST" \
+                'docker load'
+
+      - name: Sync repo and restart containers
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.LIGHTSAIL_HOST }}
+          username: ${{ secrets.LIGHTSAIL_USER }}
+          key: ${{ secrets.LIGHTSAIL_KEY }}
+          script: |
+            set -e
+            cd ~/Simple-CMS
+            git pull
+            docker compose up -d

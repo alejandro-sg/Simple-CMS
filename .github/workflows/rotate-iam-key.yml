@@ -1,0 +1,62 @@
+name: Rotate API IAM Key
+
+on:
+  schedule:
+    - cron: "0 3 1 * *" # 1st of every month at 3am UTC
+  workflow_dispatch: # allow manual trigger
+
+jobs:
+  rotate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create new IAM key
+        id: keys
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.ROTATOR_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.ROTATOR_KEY_SECRET }}
+          AWS_DEFAULT_REGION: us-east-1
+        run: |
+          # Record the old key so we can delete it after switchover
+          OLD=$(aws iam list-access-keys --user-name simple-cms-api \
+            --query 'AccessKeyMetadata[0].AccessKeyId' --output text)
+          echo "old_key=$OLD" >> "$GITHUB_OUTPUT"
+
+          # Create the new key
+          JSON=$(aws iam create-access-key --user-name simple-cms-api --output json)
+          NEW_ID=$(echo "$JSON" | jq -r '.AccessKey.AccessKeyId')
+          NEW_SECRET=$(echo "$JSON" | jq -r '.AccessKey.SecretAccessKey')
+
+          # Mask the secret so it never appears in logs
+          echo "::add-mask::$NEW_SECRET"
+          echo "new_key_id=$NEW_ID" >> "$GITHUB_OUTPUT"
+          echo "new_key_secret=$NEW_SECRET" >> "$GITHUB_OUTPUT"
+
+      - name: Update server config and restart API
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.LIGHTSAIL_HOST }}
+          username: ${{ secrets.LIGHTSAIL_USER }}
+          key: ${{ secrets.LIGHTSAIL_KEY }}
+          envs: NEW_KEY_ID,NEW_KEY_SECRET
+          script: |
+            set -e
+            sudo sed -i "s|^AWS_ACCESS_KEY_ID=.*|AWS_ACCESS_KEY_ID=$NEW_KEY_ID|" /etc/simplecms/config.env
+            sudo sed -i "s|^AWS_SECRET_ACCESS_KEY=.*|AWS_SECRET_ACCESS_KEY=$NEW_KEY_SECRET|" /etc/simplecms/config.env
+            cd ~/Simple-CMS
+            docker compose restart api
+            sleep 6
+            # Verify API came up healthy
+            docker compose logs api --tail=4
+        env:
+          NEW_KEY_ID: ${{ steps.keys.outputs.new_key_id }}
+          NEW_KEY_SECRET: ${{ steps.keys.outputs.new_key_secret }}
+
+      - name: Delete old IAM key
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.ROTATOR_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.ROTATOR_KEY_SECRET }}
+          AWS_DEFAULT_REGION: us-east-1
+          OLD_KEY: ${{ steps.keys.outputs.old_key }}
+        run: |
+          aws iam delete-access-key --user-name simple-cms-api --access-key-id "$OLD_KEY"
+          echo "Deleted old key: $OLD_KEY"
